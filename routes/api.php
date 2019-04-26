@@ -18,8 +18,9 @@ use Illuminate\Http\Request;
 //});
 
 Route::group(['prefix' => 'app', 'as' => 'app.', 'namespace' => 'Api'], function () {
-    Route::resource('veiculos', 'VeiculosController');
+    Route::resource('veiculos', 'VeiculoController');
     Route::resource('marcas', 'MarcaController');
     Route::resource('cores', 'CorController');
+    Route::resource('vendas', 'VendaController');
 });
 

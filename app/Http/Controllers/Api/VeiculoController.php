@@ -6,7 +6,7 @@ use App\Models\Api\Veiculo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VeiculosController extends Controller
+class VeiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,7 +50,7 @@ class VeiculosController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(Veiculo::where('id', $id)->where('status', true)->with('cor')->with('marca')->first());
     }
 
     /**
@@ -73,7 +73,8 @@ class VeiculosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $veiculo = Veiculo::findOrFail($id);
+        return response()->json($veiculo->updateVeiculo($request));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Models\Api;
 
+use App\Models\Venda;
 use Illuminate\Database\Eloquent\Model;
 
 class Veiculo extends Model
@@ -39,6 +40,15 @@ class Veiculo extends Model
     public function createVeiculo($dados){
         $valores = $dados->all();
         return $this->create($valores);
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $dados
+     * @return bool
+     */
+    public function updateVeiculo($dados) {
+        $this->fill($dados->all());
+        return $this->save();
     }
 
     //Os veículos não são deletados, e sim o status do mesmo é alterado
